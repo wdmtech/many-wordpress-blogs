@@ -19,6 +19,8 @@ export WP_ID=wp${number}
 export WP_HOST=wp${number}.wordpress.wdmtech.co.uk
 export MYSQL_SUFFIX=mysql_${number}
 
+echo "Starting $WP_HOST"
+
 # Start a wordpress container and disconnect from it
 docker-compose -f ./wordpress/docker-compose.yml up -d
 
