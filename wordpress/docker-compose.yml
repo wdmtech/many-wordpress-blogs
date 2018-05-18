@@ -12,9 +12,9 @@ services:
       WORDPRESS_DB_NAME: wp_database
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: mysql_suffix:3306
-      VIRTUAL_HOST: wp1.wdmtech.co.uk,,www.wp1.wdmtech.co.uk
-#      VIRTUAL_PROTO: https
-      LETSENCRYPT_HOST: wp1.wdmtech.co.uk,www.wp1.wdmtech.co.uk
+      VIRTUAL_HOST: wp1.wdmtech.co.uk
+#     VIRTUAL_PROTO: https
+      LETSENCRYPT_HOST: wp1.wdmtech.co.uk
       LETSENCRYPT_EMAIL: user@example.com
     volumes:
       - data_volume:/var/www/html
