@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+
+  wordpress:
+    image: pattonwebz/wordpress-php7-1-apache-memcached
+    ports:
+      - 80
+    environment:
+      WORDPRESS_DB_USER: database
+      WORDPRESS_DB_PASSWORD: kgB7yJCwGYq2jeQH
+      WORDPRESS_DB_NAME: wp_database
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DB_HOST: mysql_suffix:3306
+      VIRTUAL_HOST: wp1.wdmtech.co.uk,,www.wp1.wdmtech.co.uk
+#      VIRTUAL_PROTO: https
+      LETSENCRYPT_HOST: wp1.wdmtech.co.uk,www.wp1.wdmtech.co.uk
+      LETSENCRYPT_EMAIL: user@example.com
+    volumes:
+      - data_volume:/var/www/html
+      - ./home/wp:/home/wp
+    links:
+      - mysql:mysql_suffix
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: wp_database
+      MYSQL_USER: database
+      MYSQL_PASSWORD: kgB7yJCwGYq2jeQH
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./home/db:/home/db
+
+  wp:
+    image: pattonwebz/docker-wpcli
+    volumes_from:
+      - wordpress
+    links:
+      - mysql:mysql_suffix
+    entrypoint: wp
+    command: "--info"
+
+volumes:
+    db_data:
+    data_volume:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
