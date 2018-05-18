@@ -4,23 +4,23 @@ services:
 
   wordpress:
     image: pattonwebz/wordpress-php7-1-apache-memcached
-    hostname: wp1.wordpress.wdmtech.co.uk
+    hostname: ${WP_HOST}
     environment:
       PORT: 8081
       WORDPRESS_DB_USER: database
-      WORDPRESS_DB_PASSWORD: kgB7yJCwGYq2jeQH
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: wp_database
       WORDPRESS_TABLE_PREFIX: wp_
-      WORDPRESS_DB_HOST: mysql_suffix:3306
-      VIRTUAL_HOST: wp1.wordpress.wdmtech.co.uk
+      WORDPRESS_DB_HOST: ${MYSQL_SUFFIX}:3306
+      VIRTUAL_HOST: ${WP_HOST}
 #     VIRTUAL_PROTO: https
-      LETSENCRYPT_HOST: wp1.wordpress.wdmtech.co.uk
+      LETSENCRYPT_HOST: ${WP_HOST}
       LETSENCRYPT_EMAIL: user@example.com
     volumes:
-      - data_volume:/var/www/html
-      - ./home/wp:/home/wp
+      - data_volume_${MYSQL_SUFFIX}:/var/www/html
+      - ./home/wp_${MYSQL_SUFFIX}:/home/wp
     links:
-      - mysql:mysql_suffix
+      - mysql:${MYSQL_SUFFIX}
 
   mysql:
     image: mariadb
@@ -29,17 +29,17 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wp_database
       MYSQL_USER: database
-      MYSQL_PASSWORD: kgB7yJCwGYq2jeQH
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql
-      - ./home/db:/home/db
+      - db_data_${MYSQL_SUFFIX}:/var/lib/mysql
+      - ./home/db_${MYSQL_SUFFIX}:/home/db
 
   wp:
     image: pattonwebz/docker-wpcli
     volumes_from:
       - wordpress
     links:
-      - mysql:mysql_suffix
+      - mysql:${MYSQL_SUFFIX}
     entrypoint: wp
     command: "--info"
 
