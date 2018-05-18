@@ -17,3 +17,7 @@ services:
     environment:
       - VIRTUAL_HOST=whoami.local
 
+networks:
+  default:
+    external:
+      name: nginx-proxy
