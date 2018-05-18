@@ -1,13 +1,16 @@
 version: '2'
 
 services:
+
   nginx-proxy:
     image: jwilder/nginx-proxy
     ports:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-
+    environment:
+      - VIRTUAL_HOST=whoami.local
+      - DEFAULT_HOST=wp1.wdmtech.co.uk
   whoami:
     image: jwilder/whoami
     environment:
