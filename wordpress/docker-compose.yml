@@ -4,6 +4,7 @@ services:
 
   wordpress:
     image: pattonwebz/wordpress-php7-1-apache-memcached
+    container_name: wordpress_${WP_ID}
     hostname: ${WP_HOST}
     environment:
       PORT: 8081
@@ -24,6 +25,7 @@ services:
 
   mysql:
     image: mariadb
+    container_name: mariadb_${WP_ID}
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
@@ -36,6 +38,7 @@ services:
 
   wp:
     image: pattonwebz/docker-wpcli
+    container_name: wp_cli_${WP_ID}
     volumes_from:
       - wordpress
     links:
