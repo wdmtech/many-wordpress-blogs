@@ -7,7 +7,7 @@ git pull
 docker rm -f $(docker ps -aq)
 
 # Start the nginx-proxy container and disconnect from it
-docker-compose -f -d ./proxy/docker-compose.yml up -d
+docker-compose -f ./proxy/docker-compose.yml up -d
 
 for number in {1..2}
 do
@@ -20,7 +20,7 @@ export WP_HOST=wp${number}.wordpress.wdmtech.co.uk
 export MYSQL_SUFFIX=mysql_${number}
 
 # Start a wordpress container and disconnect from it
-docker-compose -f -d ./wordpress/docker-compose.yml up -d
+docker-compose -f ./wordpress/docker-compose.yml up -d
 
 echo "Finished setting up Wordpress blog number ${number}"
 
