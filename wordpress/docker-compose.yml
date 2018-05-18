@@ -5,10 +5,6 @@ services:
   wordpress:
     image: pattonwebz/wordpress-php7-1-apache-memcached
     hostname: wp1.wdmtech.co.uk
-    expose:
-      - '8081'
-    ports:
-      - '8081:8081'
     environment:
       PORT: 8081
       WORDPRESS_DB_USER: database
