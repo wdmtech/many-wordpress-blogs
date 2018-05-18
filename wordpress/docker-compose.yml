@@ -17,7 +17,7 @@ services:
       LETSENCRYPT_HOST: ${WP_HOST}
       LETSENCRYPT_EMAIL: user@example.com
     volumes:
-      - data_volume_${MYSQL_SUFFIX}:/var/www/html
+      - data_volume:/var/www/html
       - ./home/wp_${MYSQL_SUFFIX}:/home/wp
     links:
       - mysql:${MYSQL_SUFFIX}
@@ -31,7 +31,7 @@ services:
       MYSQL_USER: database
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - db_data_${MYSQL_SUFFIX}:/var/lib/mysql
+      - db_data:/var/lib/mysql
       - ./home/db_${MYSQL_SUFFIX}:/home/db
 
   wp:
