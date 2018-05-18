@@ -4,8 +4,6 @@ services:
 
   wordpress:
     image: pattonwebz/wordpress-php7-1-apache-memcached
-    ports:
-      - 80
     environment:
       WORDPRESS_DB_USER: database
       WORDPRESS_DB_PASSWORD: kgB7yJCwGYq2jeQH
