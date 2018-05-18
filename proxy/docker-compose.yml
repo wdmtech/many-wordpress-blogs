@@ -11,7 +11,7 @@ services:
       - ./:/etc/nginx/conf.d
     environment:
       - VIRTUAL_HOST=whoami.local
-      - DEFAULT_HOST=wp1.wdmtech.co.uk
+      - DEFAULT_HOST=wp1.wordpress.wdmtech.co.uk
   whoami:
     image: jwilder/whoami
     environment:
