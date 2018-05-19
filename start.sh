@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
-
-# Get the latest from the repo
-git pull
-
-# Kill everything first
-docker rm -f $(docker ps -aq)
-
-# Start the nginx-proxy container and disconnect from it
-docker-compose -f ./proxy/docker-compose.yml up -d
+# You should start the nginx-proxy container before running this script
 
 for number in {1..2}
 do
