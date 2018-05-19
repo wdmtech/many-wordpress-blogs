@@ -15,7 +15,7 @@ export MYSQL_SUFFIX=mysql_${number}
 
 mkdir ./wordpress/wp${number}
 cp ./wordpress/docker-compose.yml ./wordpress/wp${number}
-docker-compose -f ./wordpress/wp${number}/docker-compose.yml up -d
+docker-compose -f ./wordpress/wp${number}/docker-compose.yml up --build wordpress -d
 
 echo "Configured a Wordpress blog for $WP_HOST"
 
