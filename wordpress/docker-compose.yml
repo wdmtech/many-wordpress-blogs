@@ -19,7 +19,7 @@ services:
       LETSENCRYPT_EMAIL: user@example.com
     volumes:
       - data_volume:/var/www/html
-      - ./wp${WP_ID}/home/wp:/home/wp
+      - ./${WP_ID}/home/wp:/home/wp
     links:
       - mysql:${MYSQL_SUFFIX}
 
@@ -34,7 +34,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-      - ./wp${WP_ID}/home/db:/home/db
+      - ./${WP_ID}/home/db:/home/db
 
   wp:
     image: pattonwebz/docker-wpcli
