@@ -22,12 +22,7 @@ export MYSQL_SUFFIX=mysql_${number}
 echo "Starting $WP_HOST"
 
 # Start a wordpress container and disconnect from it
-docker-compose -f ./wordpress/docker-compose.yml \
--e MYSQL_PASSWORD=kgB7yJCwGYq2jeQH \
--e WP_ID=wp${number} \
--e WP_HOST=wp${number}.wordpress.wdmtech.co.uk \
--e MYSQL_SUFFIX=mysql_${number} \
-up -d
+docker-compose -f ./wordpress/docker-compose.yml up -d
 
 echo "Finished setting up Wordpress blog number ${number}"
 
