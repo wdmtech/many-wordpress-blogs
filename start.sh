@@ -10,7 +10,7 @@ rm -rf ./wordpress/wp${number}
 echo "I hope you changed the password!"
 export MYSQL_PASSWORD=kgB7yJCwGYq2jeQH
 export WP_ID=wp${number}
-export WP_HOST=wp${number}.wordpress.wdmtech.co.uk
+export WP_HOST=wp${number}.stoat.xyz
 export MYSQL_SUFFIX=mysql_${number}
 
 mkdir ./wordpress/wp${number}
