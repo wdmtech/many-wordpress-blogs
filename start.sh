@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # You should start the nginx-proxy container before running this script
 
-for number in 1 2
+for number in 1 2 3 4 5 6 7 8 9 10
 do
 
 rm -rf ./wordpress/wp${number}
