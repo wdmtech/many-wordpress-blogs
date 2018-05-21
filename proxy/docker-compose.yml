@@ -15,7 +15,7 @@ services:
       - ./certs:/etc/nginx/certs:ro
 #   environment:
 #     - VIRTUAL_HOST=whoami.local
-#     - DEFAULT_HOST=wp1.wordpress.wdmtech.co.uk
+#     - DEFAULT_HOST=wp1.stoat.xyz
 
   letsencrypt-nginx-proxy-companion:
     image: "jrcs/letsencrypt-nginx-proxy-companion"
