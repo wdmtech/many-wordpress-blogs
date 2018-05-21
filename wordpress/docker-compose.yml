@@ -6,17 +6,15 @@ services:
     image: pattonwebz/wordpress-php7-1-apache-memcached
     container_name: wordpress_${WP_ID}
     hostname: ${WP_HOST}
+    ports:
+      - 80
     environment:
-      PORT: 8081
       WORDPRESS_DB_USER: database
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: wp_database
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: ${MYSQL_SUFFIX}:3306
       VIRTUAL_HOST: ${WP_HOST}
-      VIRTUAL_PROTO: https
-      LETSENCRYPT_HOST: ${WP_HOST}
-      LETSENCRYPT_EMAIL: user@example.com
     volumes:
       - data_volume:/var/www/html
       - ./${WP_ID}/home/wp:/home/wp
