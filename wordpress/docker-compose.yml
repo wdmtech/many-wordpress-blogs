@@ -34,16 +34,6 @@ services:
       - db_data:/var/lib/mysql
       - ./${WP_ID}/home/db:/home/db
 
-  wp:
-    image: pattonwebz/docker-wpcli
-    container_name: wp_cli_${WP_ID}
-    volumes_from:
-      - wordpress
-    links:
-      - mysql:${MYSQL_SUFFIX}
-    entrypoint: wp
-    command: "--info"
-
 volumes:
     db_data:
     data_volume:
