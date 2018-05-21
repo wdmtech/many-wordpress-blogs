@@ -9,12 +9,16 @@ services:
     ports:
       - 80
     environment:
+
       WORDPRESS_DB_USER: database
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: wp_database
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: ${MYSQL_SUFFIX}:3306
       VIRTUAL_HOST: ${WP_HOST}
+#     VIRTUAL_PROTO: https
+      LETSENCRYPT_HOST: ${WP_HOST}
+      LETSENCRYPT_EMAIL: user@example.com
     volumes:
       - data_volume:/var/www/html
       - ./${WP_ID}/home/wp:/home/wp
@@ -32,7 +36,17 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-      - ./${WP_ID}/home/db:/home/db
+      - ./home/db:/home/db
+
+  wp:
+    image: pattonwebz/docker-wpcli
+    container_name: wp_cli_${WP_ID}
+    volumes_from:
+      - wordpress
+    links:
+      - mysql:${MYSQL_SUFFIX}
+    entrypoint: wp
+    command: "--info"
 
 volumes:
     db_data:

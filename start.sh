@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # You should start the nginx-proxy container before running this script
 
-rm -rf ./wordpress/wp*
-
-for number in 1
+for number in 1 2
 do
+
+rm -rf ./wordpress/wp${number}
 
 # Dynamically create ENV vars
 echo "I hope you changed the password!"
 export MYSQL_PASSWORD=kgB7yJCwGYq2jeQH
 export WP_ID=wp${number}
-export WP_HOST=wp${number}.stoat.xyz
+export WP_HOST=wp${number}.wordpress.wdmtech.co.uk
 export MYSQL_SUFFIX=mysql_${number}
 
 mkdir ./wordpress/wp${number}
