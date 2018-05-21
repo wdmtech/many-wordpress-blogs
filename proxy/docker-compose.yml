@@ -6,34 +6,12 @@ services:
     image: jwilder/nginx-proxy
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./:/etc/nginx/conf.d
       - ./:/etc/nginx/vhost.d
-      - /usr/share/nginx/html
-      - ./certs:/etc/nginx/certs:ro
-#   environment:
-#     - VIRTUAL_HOST=whoami.local
-#     - DEFAULT_HOST=wp1.stoat.xyz
-
-  letsencrypt-nginx-proxy-companion:
-    image: "jrcs/letsencrypt-nginx-proxy-companion"
     environment:
-      ACME_CA_URI: https://acme-staging.api.letsencrypt.org/directory
-    restart: always
-    volumes_from:
-      - nginx-proxy
-    depends_on:
-      - nginx-proxy
-    volumes:
-      - /etc/nginx/certs:/etc/nginx/certs:rw
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
-#  whoami:
-#    image: jwilder/whoami
-#    environment:
-#      - VIRTUAL_HOST=whoami.local
+      - DEFAULT_HOST=wp1.stoat.xyz
 
 networks:
   default:

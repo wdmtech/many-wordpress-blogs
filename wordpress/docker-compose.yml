@@ -14,7 +14,7 @@ services:
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: ${MYSQL_SUFFIX}:3306
       VIRTUAL_HOST: ${WP_HOST}
-#     VIRTUAL_PROTO: https
+      VIRTUAL_PROTO: https
       LETSENCRYPT_HOST: ${WP_HOST}
       LETSENCRYPT_EMAIL: user@example.com
     volumes:
