@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # You should start the nginx-proxy container before running this script
 
+# Stop and remove all the wordpress containers
+
+# And their folders
+
 for number in 1 2 3 4 5 6 7 8 9 10
 do
-
-rm -rf ./wordpress/wp${number}
 
 # Dynamically create ENV vars
 echo "I hope you changed the password!"
