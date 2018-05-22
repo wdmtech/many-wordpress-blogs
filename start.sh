@@ -2,7 +2,8 @@
 # You should start the nginx-proxy container before running this script
 
 # Stop and remove all the wordpress containers
-
+# docker rm -f $(docker ps -aqf name=wordpress)
+# docker rm -f $(docker ps -aqf name=mariadb_wp)
 # And their folders
 
 for number in 1 2 3 4 5 6 7 8 9 10
