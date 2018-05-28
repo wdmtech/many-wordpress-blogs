@@ -4,6 +4,7 @@ services:
 
   wordpress:
     image: pattonwebz/wordpress-php7-1-apache-memcached
+    restart: always
     container_name: wordpress_${WP_ID}
     hostname: ${WP_HOST}
     ports:
@@ -27,6 +28,7 @@ services:
 
   mysql:
     image: mariadb
+    restart: always
     container_name: mariadb_${WP_ID}
     environment:
       MYSQL_ROOT_PASSWORD: example
